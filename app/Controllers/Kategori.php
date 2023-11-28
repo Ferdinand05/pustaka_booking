@@ -23,4 +23,11 @@ class Kategori extends BaseController
 
         return view('kategori/vw_kategori', $data);
     }
+
+    public function deleteKategori($id_kategori)
+    {
+        $this->tableKategori->delete($id_kategori);
+
+        return redirect()->back();
+    }
 }

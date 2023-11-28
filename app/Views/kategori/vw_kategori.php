@@ -25,7 +25,7 @@ Kategori
                     <td><?= $row['nama_kategori']; ?></td>
                     <td>
                         <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        <a href="/kategori/deleteKategori/<?= $row['id_kategori']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
