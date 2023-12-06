@@ -30,4 +30,28 @@ class Kategori extends BaseController
 
         return redirect()->back();
     }
+
+    public function editKategori($id_kategori)
+    {
+        $kategori = $this->tableKategori->find($id_kategori);
+
+        $data = [
+            'kategori' => $kategori,
+            'title' => 'Edit Kategori'
+        ];
+        return view('kategori/editKategori', $data);
+    }
+
+    public function saveKategori()
+    {
+        $id_kategori = $this->request->getPost('id_kategori');
+        $nama_kategori = $this->request->getPost('nama_kategori');
+
+        $this->tableKategori->update($id_kategori, [
+            'nama_kategori' => $nama_kategori
+        ]);
+
+        session()->setFlashdata('success', 'Data Berhasil Diupdate!');
+        return redirect()->to(base_url('kategori'));
+    }
 }

@@ -3,15 +3,29 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ModelBuku;
+use App\Models\ModelKategori;
+use App\Models\ModelUser;
 
 class Dashboard extends BaseController
 {
     public function index()
     {
+
+        $tableBuku = new ModelBuku();
+        $tableKategori = new ModelKategori();
+        $tableUser =  new ModelUser();
+
+
+
+
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'buku' => $tableBuku->countAll(),
+            'kategori' => $tableKategori->countAll(),
+            'user' => $tableUser->countAll()
         ];
 
-        return view('template/main', $data);
+        return view('dashboard/vw_dashboard', $data);
     }
 }

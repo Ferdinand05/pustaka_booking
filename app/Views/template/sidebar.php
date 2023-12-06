@@ -38,39 +38,18 @@
             <span>Buku</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('anggota'); ?>">
+        <a class="nav-link" href="<?= base_url('user'); ?>">
             <i class="fas fa-fw fa-users"></i>
-            <span>Anggota</span></a>
+            <span>User</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('peminjaman'); ?>">
-            <i class="fas fa-fw fa-shopping-cart"></i>
-            <span>Peminjaman</span></a>
-    </li>
 
-    <!-- Nav Item - Charts -->
-    <li class=" nav-item">
-        <a class="nav-link" href="<?= base_url('pengembalian') ?>">
-            <i class="fas fa-fw fa-receipt"></i>
-            <span>Pengembalian</span></a>
-    </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-    <div class="sidebar-heading">
-        Utility
-    </div>
 
     <li class=" nav-item">
         <a class="nav-link" href="">

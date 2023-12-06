@@ -26,4 +26,16 @@ class Buku extends BaseController
 
         return view('buku/vw_buku', $data);
     }
+
+    public function detailBuku($id_buku)
+    {
+        $buku = $this->tableBuku->builder('buku b')
+            ->join('kategori k', 'k.id_kategori=b.id_kategori')->where('id', $id_buku)->get()->getResultArray();
+
+        $data = [
+            'title' => 'Detail Buku',
+            'buku' => $buku
+        ];
+        return view('buku/detailBuku', $data);
+    }
 }
