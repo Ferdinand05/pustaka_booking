@@ -7,7 +7,7 @@ Kategori
 
 <?= $this->section('content') ?>
 <div class="form-group">
-    <a href="" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Kategori</a>
+    <a href="/kategori/formAddKategori" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Kategori</a>
 </div>
 <div class="form-group">
     <?php if (session()->has('success')) : ?>

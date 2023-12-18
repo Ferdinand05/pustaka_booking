@@ -54,4 +54,25 @@ class Kategori extends BaseController
         session()->setFlashdata('success', 'Data Berhasil Diupdate!');
         return redirect()->to(base_url('kategori'));
     }
+
+    public function formAddKategori()
+    {
+
+        $data = [
+            'title' => 'Form Kategori'
+        ];
+        return view('kategori/formAdd', $data);
+    }
+
+    public function addKategori()
+    {
+        $nama_kategori = $this->request->getPost('nama_kategori');
+
+        $this->tableKategori->insert([
+            'nama_kategori' => $nama_kategori
+        ]);
+
+        session()->setFlashdata('success', 'Data Berhasil DITAMBAHKAN!');
+        return redirect()->to(base_url('kategori'));
+    }
 }

@@ -16,7 +16,9 @@ class Dashboard extends BaseController
         $tableKategori = new ModelKategori();
         $tableUser =  new ModelUser();
 
-
+        if (!session()->has('logged_in')) {
+            return redirect()->to(base_url('/'))->withInput();
+        }
 
 
         $data = [
