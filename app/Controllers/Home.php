@@ -2,10 +2,55 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelBuku;
+use App\Models\ModelUser;
+
 class Home extends BaseController
 {
+    protected $tableUser;
+    protected $tableBuku;
+    protected $tablePinjam;
+    public function __construct()
+    {
+        $this->tableUser = new ModelUser();
+        $this->tableBuku = new ModelBuku();
+    }
     public function index(): string
     {
-        return view('welcome_message');
+
+        $dataBuku = $this->tableBuku->findAll();
+
+        $data = [
+            'title' => 'Home',
+            'buku' => $dataBuku
+        ];
+
+        return view('home/index', $data);
+    }
+
+    public function detailBuku($id_buku)
+    {
+        $buku = $this->tableBuku->builder('buku b')
+            ->join('kategori k', 'k.id_kategori=b.id_kategori')->where('id', $id_buku)->get()->getResultArray();
+
+        $data = [
+            'title' => 'Detail Buku',
+            'buku' => $buku
+        ];
+
+        return view('home/detailbuku', $data);
+    }
+
+
+    public function detailUser($user_id)
+    {
+        $user = $this->tableUser->builder('user')->join('role r', 'r.id=user.role_id')->where('user_id', $user_id)->get()->getResultArray();
+
+        $data = [
+            'title' => 'Detail User',
+            'user' => $user
+        ];
+
+        return view('home/detailuser', $data);
     }
 }

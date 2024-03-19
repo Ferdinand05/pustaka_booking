@@ -22,7 +22,7 @@
     <link href="<?= base_url('css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('vendor/datatab/les/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 
     <!-- sweetalert -->
     <link rel="stylesheet" href="<?= base_url('vendor\sweetalert2\sweetalert2.all.min.js'); ?>">

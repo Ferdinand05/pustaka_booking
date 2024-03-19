@@ -29,6 +29,12 @@ class Buku extends BaseController
 
     public function detailBuku($id_buku)
     {
+
+        if (!session()->has('logged_in')) {
+            return redirect()->to(site_url('home'));
+        }
+
+
         $buku = $this->tableBuku->builder('buku b')
             ->join('kategori k', 'k.id_kategori=b.id_kategori')->where('id', $id_buku)->get()->getResultArray();
 

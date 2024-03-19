@@ -43,6 +43,13 @@ class Login extends BaseController
                 ->get()->getRowArray();
             session()->set('logged_in', true);
             session()->set('user', $dataUser['nama']);
+            session()->set('user_id', $dataUser['user_id']);
+            session()->set('role', $dataUser['role_id']);
+
+
+            if (session('role') == 2) {
+                return redirect()->to(site_url('home'))->withInput();
+            }
 
             return redirect()->to(site_url('dashboard'))->withInput();
         }

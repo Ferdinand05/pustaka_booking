@@ -17,7 +17,8 @@ class Dashboard extends BaseController
         $tableUser =  new ModelUser();
 
         if (!session()->has('logged_in')) {
-            return redirect()->to(base_url('/'))->withInput();
+
+            return redirect()->to(base_url('/'));
         }
 
 
