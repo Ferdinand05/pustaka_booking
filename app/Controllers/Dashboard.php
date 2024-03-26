@@ -19,7 +19,16 @@ class Dashboard extends BaseController
         if (!session()->has('logged_in')) {
 
             return redirect()->to(base_url('/'));
+        } else {
+
+            if (session('role') == 1) {
+
+                return redirect()->to(base_url('dashboard'));
+            } else {
+                return redirect()->to(base_url('home'));
+            }
         }
+
 
 
         $data = [

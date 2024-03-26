@@ -28,17 +28,26 @@ class Home extends BaseController
         return view('home/index', $data);
     }
 
-    public function detailBuku($id_buku)
+    public function detailBuku()
     {
-        $buku = $this->tableBuku->builder('buku b')
-            ->join('kategori k', 'k.id_kategori=b.id_kategori')->where('id', $id_buku)->get()->getResultArray();
 
-        $data = [
-            'title' => 'Detail Buku',
-            'buku' => $buku
-        ];
+        $id_buku = $this->request->getPost('id_buku');
 
-        return view('home/detailbuku', $data);
+        if ($this->request->isAJAX()) {
+            $buku = $this->tableBuku->builder('buku b')
+                ->join('kategori k', 'k.id_kategori=b.id_kategori')->where('id', $id_buku)->get()->getResultArray();
+
+            $data = [
+                'title' => 'Detail Buku',
+                'buku' => $buku
+            ];
+
+            $json = [
+                'data' => view('home/detailbuku', $data)
+            ];
+
+            return $this->response->setJSON($json);
+        }
     }
 
 

@@ -11,7 +11,7 @@
                     <p><?= $row['pengarang']; ?></p>
                     <p><?= $row['penerbit']; ?> <br> <?= $row['tahun_terbit']; ?></p>
                     <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Booking</a>
-                    <a href="home/detailbuku/<?= $row['id']; ?>" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Detail</a>
+                    <button type="button" id="btnDetailBuku" class="btn btn-sm btn-info"><i class="fas fa-info-circle" onclick="detailBuku(<?= $row['id']; ?>)"></i></button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -19,7 +19,9 @@
 
     </div>
 
+    <div class="modalBuku">
 
+    </div>
 
 </div>
 <footer class="pt-3 pb-2 bg-secondary text-white text-center flex ">
@@ -27,5 +29,30 @@
         <p class="lh-lg">Dibuat oleh Ferdinand. 2024</p>
     </div>
 </footer>
+
+
+<script>
+    function detailBuku(id_buku) {
+        $.ajax({
+            type: "post",
+            url: "/home/detailBuku",
+            data: {
+                id_buku: id_buku
+            },
+            dataType: "JSON",
+
+            success: function(response) {
+                if (response.data) {
+                    $('.modalBuku').html(response.data);
+                    $('#modalDetailBuku').modal('show');
+                }
+            }
+        });
+    }
+
+    $(document).ready(function() {
+
+    });
+</script>
 
 <?= $this->include('template/footer'); ?>
